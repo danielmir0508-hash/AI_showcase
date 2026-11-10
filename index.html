@@ -1,0 +1,1953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daniel Miranda — Showcase Ejecutivo de Soluciones de IA</title>
+  <style>
+    /* ==========================================================================
+       RESET & BASE DESIGN SYSTEM (Light Medical Corporate Theme)
+       ========================================================================== */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      scroll-behavior: smooth;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background-color: #f8fafc;
+      color: #1e293b;
+      line-height: 1.5;
+    }
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    button, select, input {
+      font: inherit;
+    }
+
+    /* Container */
+    .container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* ==========================================================================
+       HEADER & NAVIGATION (Clean, Uncluttered, Resilient)
+       ========================================================================== */
+    .top-bar {
+      background: linear-gradient(90deg, #f0fdfa 0%, #e0f2fe 50%, #f1f5f9 100%);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 6px 0;
+      font-size: 11px;
+      color: #475569;
+    }
+    .top-bar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: #ccfbf1;
+      color: #0f766e;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .badge-live-dot {
+      width: 6px;
+      height: 6px;
+      background-color: #0d9488;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.3);
+    }
+
+    /* En pantallas móviles ocultamos la barra superior para no saturar */
+    @media (max-width: 640px) {
+      .top-bar {
+        display: none;
+      }
+    }
+
+    header.main-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e2e8f0;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    .nav-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 60px;
+      padding: 8px 0;
+      gap: 16px;
+    }
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .avatar-dm {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, #0d9488 0%, #0284c7 100%);
+      color: #ffffff;
+      font-weight: 800;
+      font-size: 14px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 4px rgba(13, 148, 136, 0.25);
+    }
+    .brand-meta {
+      display: flex;
+      flex-direction: column;
+    }
+    .brand-name-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .brand-name {
+      font-size: 15px;
+      font-weight: 800;
+      color: #0f172a;
+      white-space: nowrap;
+    }
+    .brand-tag {
+      font-size: 9px;
+      font-weight: 700;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 1px 6px;
+      border-radius: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .brand-sub {
+      font-size: 11px;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    /* Nav Actions */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+    }
+    .lang-switcher {
+      display: flex;
+      background: #f1f5f9;
+      padding: 2px;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      flex-shrink: 0;
+    }
+    .lang-btn {
+      border: none;
+      background: transparent;
+      padding: 4px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 6px;
+      color: #64748b;
+      transition: all 0.15s ease;
+    }
+    .lang-btn.active {
+      background: #ffffff;
+      color: #0f766e;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    }
+    .btn-hc-jump {
+      background: linear-gradient(135deg, #0d9488 0%, #0284c7 100%);
+      color: #ffffff;
+      border: none;
+      padding: 7px 12px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 4px rgba(13, 148, 136, 0.2);
+      transition: opacity 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn-hc-jump:hover {
+      opacity: 0.92;
+    }
+    .btn-contact {
+      background: #ffffff;
+      color: #0f766e;
+      border: 1px solid #ccfbf1;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.15s ease;
+      white-space: nowrap;
+    }
+    .btn-contact:hover {
+      background: #f0fdfa;
+    }
+
+    /* En desktop mostramos el botón grande en el header; en pantallas medianas y móviles va abajo */
+    .desktop-only-btn {
+      display: inline-flex;
+    }
+    @media (max-width: 860px) {
+      .desktop-only-btn {
+        display: none;
+      }
+    }
+
+    /* Mobile Quick Bar */
+    .mobile-bar {
+      display: none;
+      padding: 8px 16px;
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    @media (max-width: 860px) {
+      .mobile-bar {
+        display: block;
+      }
+    }
+    .btn-mobile-full {
+      width: 100%;
+      text-align: center;
+      justify-content: center;
+    }
+
+    /* ==========================================================================
+       HERO & FILTER SYSTEM
+       ========================================================================== */
+    .hero-section {
+      padding: 32px 0 24px;
+      background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      color: #0f766e;
+      background: #ccfbf1;
+      border: 1px solid #99f6e4;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      margin-bottom: 12px;
+    }
+    .hero-title {
+      font-size: 24px;
+      line-height: 1.25;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    @media (min-width: 768px) {
+      .hero-title {
+        font-size: 34px;
+      }
+    }
+    .hero-title .gradient-text {
+      background: linear-gradient(135deg, #0d9488 0%, #0284c7 50%, #4338ca 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-desc {
+      font-size: 13.5px;
+      color: #475569;
+      max-width: 820px;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    /* Filter Tabs */
+    .filter-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .filter-btn {
+      background: #ffffff;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+    .filter-btn:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    .filter-btn.active {
+      background: #0f766e;
+      color: #ffffff;
+      border-color: #0f766e;
+      box-shadow: 0 2px 4px rgba(15, 118, 110, 0.25);
+    }
+
+    /* ==========================================================================
+       SHOWCASE GRID & CARD LAYOUT
+       ========================================================================== */
+    main.content-area {
+      padding: 32px 0 48px;
+      flex: 1;
+    }
+    .solutions-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 900px) {
+      .solutions-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    .grid-item-full {
+      grid-column: 1 / -1;
+    }
+
+    .card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 20px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .card:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+    }
+    .card.featured {
+      border: 2px solid #0d9488;
+      box-shadow: 0 4px 20px rgba(13, 148, 136, 0.1);
+      position: relative;
+    }
+    .featured-tag {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #0f766e;
+      color: #ffffff;
+      font-size: 9px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 4px 12px;
+      border-bottom-left-radius: 10px;
+    }
+
+    .card-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      gap: 8px;
+    }
+    .card-mod-badge {
+      font-size: 10px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0d9488;
+    }
+    .card-tech-tag {
+      font-size: 9.5px;
+      font-weight: 600;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 2px 7px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }
+    .card-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 6px;
+    }
+    .card-desc {
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 14px;
+    }
+
+    /* Simulator Surface Panels */
+    .sim-panel {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 12px;
+      font-size: 11.5px;
+    }
+    .sim-panel-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 5px;
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 8px;
+    }
+    .form-label {
+      display: block;
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #475569;
+      margin-bottom: 3px;
+    }
+    .form-select, .form-input {
+      width: 100%;
+      background: #ffffff;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 6px 8px;
+      font-size: 11.5px;
+      color: #0f172a;
+      outline: none;
+    }
+    .form-select:focus, .form-input:focus {
+      border-color: #0d9488;
+      box-shadow: 0 0 0 2px rgba(13, 148, 136, 0.15);
+    }
+
+    /* Buttons inside cards */
+    .btn-action {
+      background: #0f766e;
+      color: #ffffff;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background 0.15s ease;
+    }
+    .btn-action:hover {
+      background: #115e59;
+    }
+    .btn-outline {
+      background: #ffffff;
+      color: #0f766e;
+      border: 1px solid #cbd5e1;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-outline:hover {
+      background: #f1f5f9;
+      border-color: #0f766e;
+    }
+
+    /* Result pill cards */
+    .result-box {
+      border-radius: 8px;
+      padding: 10px;
+      margin-top: 8px;
+      font-size: 11px;
+      line-height: 1.45;
+    }
+    .result-box.teal {
+      background: #f0fdfa;
+      border: 1px solid #99f6e4;
+      border-left: 4px solid #0d9488;
+      color: #134e4a;
+    }
+    .result-box.amber {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #f59e0b;
+      color: #78350f;
+    }
+    .result-box.blue {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-left: 4px solid #3b82f6;
+      color: #1e3a8a;
+    }
+    .result-box.red {
+      background: #fef2f2;
+      border: 1px solid #fecaca;
+      border-left: 4px solid #ef4444;
+      color: #991b1b;
+    }
+
+    /* Citations in RAG */
+    .citation-tag {
+      display: inline-block;
+      background: #e6fffa;
+      color: #0f766e;
+      font-weight: 700;
+      font-family: monospace;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-size: 10px;
+      border: 1px solid #b2f5ea;
+    }
+    .citation-link {
+      color: #0284c7;
+      text-decoration: underline;
+      cursor: pointer;
+      font-weight: 700;
+      margin-left: 4px;
+    }
+
+    /* Audio wave simulation */
+    .wave-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      height: 32px;
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 0 10px;
+      margin: 8px 0;
+    }
+    .wave-bar {
+      width: 3px;
+      background-color: #0d9488;
+      border-radius: 2px;
+      animation: wavePulse 1s infinite ease-in-out;
+    }
+    .wave-bar:nth-child(2) { animation-delay: 0.15s; height: 18px; }
+    .wave-bar:nth-child(3) { animation-delay: 0.3s; height: 26px; }
+    .wave-bar:nth-child(4) { animation-delay: 0.45s; height: 14px; }
+    .wave-bar:nth-child(5) { animation-delay: 0.2s; height: 22px; }
+    .wave-bar:nth-child(6) { animation-delay: 0.35s; height: 10px; }
+    @keyframes wavePulse {
+      0%, 100% { transform: scaleY(0.4); }
+      50% { transform: scaleY(1); }
+    }
+
+    /* Metric Grid (Command Center) */
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    @media (min-width: 640px) {
+      .metric-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+    .metric-card {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px;
+      text-align: center;
+    }
+    .metric-card-num {
+      font-size: 20px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .metric-card-lbl {
+      font-size: 10px;
+      color: #64748b;
+      font-weight: 600;
+    }
+
+    /* ==========================================================================
+       MODAL (Citation Inspector)
+       ========================================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 100;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+    .modal-overlay.open {
+      display: flex;
+    }
+    .modal-window {
+      background: #ffffff;
+      border-radius: 14px;
+      width: 100%;
+      max-width: 560px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+      border: 1px solid #cbd5e1;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      max-height: 90vh;
+    }
+    .modal-head {
+      padding: 14px 16px;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #f8fafc;
+    }
+    .modal-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #0f172a;
+    }
+    .modal-close {
+      background: transparent;
+      border: none;
+      font-size: 18px;
+      cursor: pointer;
+      color: #64748b;
+      font-weight: 700;
+    }
+    .modal-body {
+      padding: 16px;
+      overflow-y: auto;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      font-size: 11px;
+      line-height: 1.5;
+      background: #ffffff;
+      color: #334155;
+    }
+    .modal-foot {
+      padding: 10px 16px;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 10px;
+      color: #64748b;
+    }
+
+    /* ==========================================================================
+       DISCLOSURE & FOOTER
+       ========================================================================== */
+    .disclosure-box {
+      margin-top: 36px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 12px;
+      padding: 16px 20px;
+      font-size: 11px;
+      color: #475569;
+      line-height: 1.55;
+    }
+    .disclosure-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    footer.page-footer {
+      background: #ffffff;
+      border-top: 1px solid #e2e8f0;
+      padding: 24px 0;
+      text-align: center;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: auto;
+    }
+    footer.page-footer strong {
+      color: #0f172a;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Informative Bar -->
+  <div class="top-bar">
+    <div class="container">
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <span class="badge-live"><span class="badge-live-dot"></span><span data-i18n="topTag">Entorno Demostrativo</span></span>
+        <span data-i18n="topSub">Simulaciones operativas de modelos de IA en producción</span>
+      </div>
+      <div>
+        <span data-i18n="topConsultant">Consultor:</span> <strong>Daniel Rodrigo Miranda García</strong>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <div class="container">
+      <div class="nav-wrapper">
+        <!-- Brand Group -->
+        <div class="brand-group">
+          <div class="avatar-dm">DM</div>
+          <div class="brand-meta">
+            <div class="brand-name-row">
+              <span class="brand-name">Daniel Miranda</span>
+              <span class="brand-tag">Portfolio</span>
+            </div>
+            <div class="brand-sub" data-i18n="navSubtitle">Liderazgo de Producto &amp; Consultoría IA</div>
+          </div>
+        </div>
+
+        <!-- Nav Actions -->
+        <div class="nav-actions">
+          <div class="lang-switcher">
+            <button id="btn-lang-es" class="lang-btn active" onclick="window.switchLang('es')">ES</button>
+            <button id="btn-lang-en" class="lang-btn" onclick="window.switchLang('en')">EN</button>
+          </div>
+          <button class="btn-hc-jump desktop-only-btn" onclick="window.scrollToSection('sol-consumo-hc')">
+            <span>📋</span> <span data-i18n="btnPhase1">Modelo de consumo de historia clínica</span>
+          </button>
+          <a href="mailto:dani_miranda.garcia@hotmail.com?subject=Consulta%20Proyecto%20IA%20-%20Daniel%20Miranda" class="btn-contact">
+            <span>✉️</span> <span data-i18n="btnContact">Contactar</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Quick Action Bar -->
+  <div class="mobile-bar">
+    <button class="btn-hc-jump btn-mobile-full" onclick="window.scrollToSection('sol-consumo-hc')">
+      <span>📋</span> <span data-i18n="btnPhase1">Modelo de consumo de historia clínica</span>
+    </button>
+  </div>
+
+  <!-- Hero & Filter Section -->
+  <section class="hero-section">
+    <div class="container">
+      <span class="hero-badge" data-i18n="heroBadge">⚡ Simuladores Interactivos de Arquitectura</span>
+      <h1 class="hero-title">
+        <span data-i18n="heroTitle1">Inteligencia Artificial Operativa,</span><br>
+        <span class="gradient-text" data-i18n="heroTitle2">Clínica y Financieramente Rentable</span>
+      </h1>
+      <p class="hero-desc" data-i18n="heroDesc">
+        Muestra funcional, arquitectura técnica y pantallas interactivas de las soluciones de Inteligencia Artificial que he diseñado e implementado para optimizar operaciones hospitalarias, salud digital y procesos de alta demanda corporativa.
+      </p>
+
+      <!-- Category Filter Tabs -->
+      <div class="filter-tabs">
+        <button id="filter-all" class="filter-btn active" onclick="window.filterCategory('all')">
+          <span>❖</span> <span data-i18n="filterAll">Todas las Soluciones (15)</span>
+        </button>
+        <button id="filter-health" class="filter-btn" onclick="window.filterCategory('health')">
+          <span>🩺</span> <span data-i18n="filterHealth">Track Salud Hospitalaria (7)</span>
+        </button>
+        <button id="filter-enterprise" class="filter-btn" onclick="window.filterCategory('enterprise')">
+          <span>⚙️</span> <span data-i18n="filterEnterprise">Track Negocio &amp; Automatización (8)</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Content Area: 15 Solutions -->
+  <main class="content-area">
+    <div class="container">
+      <div class="solutions-grid">
+
+        <!-- ==============================================================
+             SOLUTION 1: FEATURED RAG CLINICO (Fase 1 de la Clínica)
+             ============================================================== -->
+        <article id="sol-consumo-hc" class="card featured grid-item-full grid-item" data-category="health">
+          <div class="featured-tag" data-i18n="sol1_badge">Arquitectura de Referencia Fase 1</div>
+          <div class="card-header-row">
+            <span class="card-mod-badge" data-i18n="sol1_mod">Módulo Asistencial Clínico #1</span>
+            <span class="card-tech-tag">RAG Determinista • Cero Alucinación (Temp 0.0)</span>
+          </div>
+          <h2 class="card-title" data-i18n="sol1_title">Modelo de Consumo de Historia Clínica &amp; Resumen de Exámenes</h2>
+          <p class="card-desc" data-i18n="sol1_desc">
+            Motor de consulta en lenguaje natural implementado para auditoría clínica y facturación que recupera laboratorios numéricos y notas médicas con citación obligatoria del identificador de examen, fecha y profesional firmante.
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 14px;">
+            <!-- Controles de Consulta -->
+            <div class="sim-panel">
+              <div class="sim-panel-title">
+                <span data-i18n="sol1_patient">Paciente Sintético: PAC-78219 (C. Morales, 58a)</span>
+                <span class="citation-tag">LIS/HIS Live</span>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="sol1_prompt_lbl">Consultas Preconfiguradas para Pruebas:</label>
+                <div style="display: flex; flex-direction: column; gap: 6px;">
+                  <button class="btn-outline" style="text-align: left;" onclick="window.runClinicalQuery('labs')">
+                    🔬 <span data-i18n="sol1_btn_q1">¿Últimos laboratorios de glucemia y función renal?</span>
+                  </button>
+                  <button class="btn-outline" style="text-align: left;" onclick="window.runClinicalQuery('allergies')">
+                    ⚠️ <span data-i18n="sol1_btn_q2">¿Antecedentes quirúrgicos y alergias medicamentosas?</span>
+                  </button>
+                  <button class="btn-outline" style="text-align: left;" onclick="window.runClinicalQuery('internal_med')">
+                    📝 <span data-i18n="sol1_btn_q3">¿Última evolución médica y plan de ajuste farmacológico?</span>
+                  </button>
+                </div>
+              </div>
+              <div class="form-group" style="margin-top: 10px;">
+                <label class="form-label" data-i18n="sol1_input_lbl">O formule su propia pregunta clínica:</label>
+                <div style="display: flex; gap: 6px;">
+                  <input type="text" id="custom-query-input" class="form-input" placeholder="Ej: ¿Tiene eventos adversos a antihipertensivos?">
+                  <button class="btn-action" onclick="window.runClinicalQuery('custom')" data-i18n="sol1_btn_ask">Consultar</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Panel de Respuesta con Citas -->
+            <div class="sim-panel" style="background: #ffffff; border: 1px solid #cbd5e1;">
+              <div class="sim-panel-title">
+                <span data-i18n="sol1_res_title">Respuesta Auditable de la IA</span>
+                <span style="font-size: 10px; color: #0d9488; font-weight: 700;">Latency: 0.38s • 0% Hallucination</span>
+              </div>
+              <div id="clinical-response-content">
+                <div class="result-box amber">
+                  <strong>• Hemoglobina Glicosilada (HbA1c): 8.4%</strong> (Fuera de rango &gt; 7.0%).<br>
+                  <span style="font-size: 10px; color: #64748b;">
+                    Fuente: <span class="citation-tag">LIS_Lab #9102</span> • Fecha: 14/10/2026 08:30
+                    <a class="citation-link" onclick="window.openCitationModal('lab9102')">[Ver reporte original]</a>
+                  </span>
+                </div>
+                <div class="result-box teal">
+                  <strong>• Creatinina Sérica: 1.02 mg/dL</strong> (TFG estimada: 82 ml/min/1.73m² - Rango Normal).<br>
+                  <span style="font-size: 10px; color: #64748b;">
+                    Fuente: <span class="citation-tag">LIS_Lab #9102</span> • Fecha: 14/10/2026 08:30
+                    <a class="citation-link" onclick="window.openCitationModal('lab9102')">[Ver reporte original]</a>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 2: IA TRIAJE MÉDICO (Seguros Bolívar)
+             ============================================================== -->
+        <article class="card grid-item" data-category="health">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol2_mod">Salud Digital &amp; Telemedicina</span>
+              <span class="card-tech-tag">Protocolo Manchester + NLP</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol2_title">IA de Triaje Médico y Enrutamiento Clínico</h3>
+            <p class="card-desc" data-i18n="sol2_desc">
+              Clasificación protocolizada de síntomas en tiempo real para derivación médica asistencial (Telemedicina, Consulta Prioritaria o Urgencias).
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div class="form-group">
+              <label class="form-label" data-i18n="sol2_lbl">Seleccione Cuadro Clínico de Ingreso:</label>
+              <select id="triage-case-select" class="form-select" onchange="window.evalTriage()">
+                <option value="pleuritic" data-i18n="sol2_opt1">Dolor torácico pleurítico + Fiebre 38.8°C</option>
+                <option value="headache" data-i18n="sol2_opt2">Cefalea tensional leve sin signos de alarma</option>
+                <option value="pediatric" data-i18n="sol2_opt3">Otalgia pediátrica aguda de 24 horas</option>
+              </select>
+            </div>
+            <div id="triage-output-box" class="result-box red">
+              <!-- Inyectado por JS -->
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 3: IA AGENDAMIENTO QUIRÚRGICO (Grupo Valor)
+             ============================================================== -->
+        <article class="card grid-item" data-category="health">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol3_mod">Gestión Quirúrgica</span>
+              <span class="card-tech-tag">Machine Learning Supervisado</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol3_title">Estimación de Tiempos Reales de Cirugía</h3>
+            <p class="card-desc" data-i18n="sol3_desc">
+              Predicción de duración quirúrgica (incisión a cierre) cruzando procedimiento, historial del cirujano, riesgo anestésico y edad del paciente.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <div class="form-group">
+                <label class="form-label" data-i18n="sol3_lbl_proc">Procedimiento:</label>
+                <select id="qx-proc" class="form-select" onchange="window.calcSurgeryTime()">
+                  <option value="colelap" data-i18n="sol3_opt_c">Colecistectomía Laparoscópica</option>
+                  <option value="hernia" data-i18n="sol3_opt_h">Hernioplastia Inguinal</option>
+                  <option value="artro" data-i18n="sol3_opt_a">Artroscopia de Rodilla</option>
+                  <option value="hip" data-i18n="sol3_opt_hip">Reemplazo de Cadera</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="sol3_lbl_surg">Cirujano Asignado:</label>
+                <select id="qx-surg" class="form-select" onchange="window.calcSurgeryTime()">
+                  <option value="fast" data-i18n="sol3_s1">Dr. Morales (Curva Alta)</option>
+                  <option value="avg" data-i18n="sol3_s2">Dra. Herrera (Estándar)</option>
+                  <option value="slow" data-i18n="sol3_s3">Dr. Castro (Alta Complejidad)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="sol3_lbl_asa">Riesgo ASA:</label>
+                <select id="qx-asa" class="form-select" onchange="window.calcSurgeryTime()">
+                  <option value="1">ASA I - Saludable</option>
+                  <option value="2" selected>ASA II - Leve</option>
+                  <option value="3">ASA III - Severo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label" data-i18n="sol3_lbl_age">Edad Paciente:</label>
+                <input type="number" id="qx-age" class="form-input" value="58" onchange="window.calcSurgeryTime()">
+              </div>
+            </div>
+            <div id="qx-result-box" class="result-box teal">
+              <!-- Inyectado por JS -->
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 4: TORRE DE CONTROL DE EGRESOS & CAMAS
+             ============================================================== -->
+        <article class="card grid-item" data-category="health">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol4_mod">Capacidad Hospitalaria</span>
+              <span class="card-tech-tag">Simulación de Flujo</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol4_title">Torre de Control de Egresos &amp; Giro de Cama</h3>
+            <p class="card-desc" data-i18n="sol4_desc">
+              Predicción y coordinación del flujo intrahospitalario Urgencias → Quirófano → Hospitalización → Altas para desatascar admisiones.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div class="metric-grid">
+              <div class="metric-card">
+                <div class="metric-card-num" style="color: #d97706;">14</div>
+                <div class="metric-card-lbl" data-i18n="sol4_kpi1">En Urgencias</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-num" style="color: #0284c7;">5</div>
+                <div class="metric-card-lbl" data-i18n="sol4_kpi2">En Quirófano</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-num" style="color: #0f766e;">92%</div>
+                <div class="metric-card-lbl" data-i18n="sol4_kpi3">Ocupación Piso</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-num" style="color: #16a34a;">11</div>
+                <div class="metric-card-lbl" data-i18n="sol4_kpi4">Altas Hoy (IA)</div>
+              </div>
+            </div>
+            <div class="result-box amber">
+              <strong>⚠️ <span data-i18n="sol4_alert_t">Alerta Cuello de Botella (15:00 - 17:00):</span></strong>
+              <span data-i18n="sol4_alert_b">4 camas demandadas por recuperación post-quirúrgica vs 2 altas estimadas. Se sugiere priorizar alta médica en Cama 308 (Score hemodinámico: 96%).</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 5: CANASTAS QUIRÚRGICAS RENTABLES CON ML
+             ============================================================== -->
+        <article class="card grid-item" data-category="health">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol5_mod">Control de Costos Clínicos</span>
+              <span class="card-tech-tag">Regresión &amp; Análisis Financiero</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol5_title">Canastas Quirúrgicas &amp; Control de Rentabilidad</h3>
+            <p class="card-desc" data-i18n="sol5_desc">
+              Parametrización de medicamentos, dispositivos e insumos por intervención para contrastar en tiempo real con la tarifa contratada con el pagador.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span data-i18n="sol5_payer">Aseguradora / Convenio:</span>
+              <strong>Seguros Sura / Póliza Salud Global</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span data-i18n="sol5_rate">Tarifa Paquetizada Pactada:</span>
+              <strong>$ 4.850.000 COP</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span data-i18n="sol5_mat">Costo de Insumos Proyectado (ML):</span>
+              <strong style="color: #0f766e;">$ 2.620.000 COP</strong>
+            </div>
+            <div class="result-box teal">
+              <strong>✓ <span data-i18n="sol5_margin">Margen Estimado de Cirugía: +46.0%</span></strong><br>
+              <span style="font-size: 10px;" data-i18n="sol5_sub">Alerta de prevención: 18% de variaciones históricas ocurrían por suturas mecánicas no autorizadas.</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 6: TORRE DE QUIRÓFANOS & TIEMPOS MUERTOS
+             ============================================================== -->
+        <article class="card grid-item" data-category="health">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol6_mod">Eficiencia de Pabellón</span>
+              <span class="card-tech-tag">Rotación de Salas</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol6_title">Torre de Quirófanos: Control de Tiempos Muertos</h3>
+            <p class="card-desc" data-i18n="sol6_desc">
+              Panel visual de estado de salas quirúrgicas, tiempos de desinfección/limpieza y reducción del downtime de recambio entre intervenciones.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: flex; flex-direction: column; gap: 6px;">
+              <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: #ecfdf5; border-radius: 6px; border: 1px solid #a7f3d0;">
+                <strong style="color: #065f46;" data-i18n="sol6_r1">Sala 1: En Cirugía</strong>
+                <span style="color: #047857;" data-i18n="sol6_r1_s">Fin estimado: 28 min</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: #fffbeb; border-radius: 6px; border: 1px solid #fde68a;">
+                <strong style="color: #92400e;" data-i18n="sol6_r2">Sala 2: Limpieza y Desinfección</strong>
+                <span style="color: #b45309;" data-i18n="sol6_r2_s">Cronómetro: 08:24 min (Meta 15')</span>
+              </div>
+              <div style="display: flex; justify-content: space-between; padding: 6px 10px; background: #eff6ff; border-radius: 6px; border: 1px solid #bfdbfe;">
+                <strong style="color: #1e40af;" data-i18n="sol6_r3">Sala 3: Lista para Ingreso</strong>
+                <span style="color: #1d4ed8;" data-i18n="sol6_r3_s">Camilla de paciente en tránsito</span>
+              </div>
+            </div>
+            <div style="margin-top: 8px; font-size: 10px; color: #64748b;" data-i18n="sol6_stat">
+              ⏱️ Tiempo de recambio optimizado: Disminución de 34 min a 19 min promedio por sala.
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 7: PREVENCIÓN DE GLOSAS & PRE-FACTURACIÓN
+             ============================================================== -->
+        <article class="card grid-item" data-category="health">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol7_mod">Auditoría Médica</span>
+              <span class="card-tech-tag">Cruce Clínico-Financiero</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol7_title">Prevención de Glosas y Control de Pre-Facturación</h3>
+            <p class="card-desc" data-i18n="sol7_desc">
+              Auditoría automatizada que concilia órdenes médicas, notas de enfermería y registros de farmacia con las cuentas radicadas antes del envío al asegurador.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span data-i18n="sol7_kardex">Insumo Registrado en Kardex:</span>
+              <strong>Enoxaparina 40mg (3 ampollas aplicadas)</strong>
+            </div>
+            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
+              <span data-i18n="sol7_prebill">Cargado en Pre-factura:</span>
+              <strong style="color: #b91c1c;">Enoxaparina 40mg (4 ampollas cobradas)</strong>
+            </div>
+            <div class="result-box red">
+              <strong>⚠️ <span data-i18n="sol7_alert_t">Glosa Inminente Evitada:</span></strong>
+              <span data-i18n="sol7_alert_b">Discrepancia de 1 unidad no sustentada en hoja de administración. Cuenta corregida de forma preventiva previo a radicación.</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 8: PROCESAMIENTO DOCUMENTAL Y EXPEDIENTES
+             ============================================================== -->
+        <article class="card grid-item" data-category="enterprise">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol8_mod">Extracción Documental</span>
+              <span class="card-tech-tag">Intelligent OCR &amp; LLM Parsing</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol8_title">Agente de Procesamiento y Validación de Expedientes</h3>
+            <p class="card-desc" data-i18n="sol8_desc">
+              Extracción semántica en dossiers complejos (evaluaciones de salud psicológica y certificados legales) con detección inmediata de requisitos pendientes.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 700;">
+              <span>Expediente #EX-8402 (Salud &amp; Elegibilidad)</span>
+              <span style="color: #0f766e;">Completitud: 85%</span>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 4px;">
+              <div style="padding: 4px 8px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; display: flex; justify-content: space-between;">
+                <span>✓ Informe Psicológico Especializado</span>
+                <span style="color: #16a34a; font-weight: 700;">Validado (PHQ-9: 19/27)</span>
+              </div>
+              <div style="padding: 4px 8px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 4px; display: flex; justify-content: space-between;">
+                <span>✓ Documento de Identidad</span>
+                <span style="color: #16a34a; font-weight: 700;">Vigente (Vence 2029)</span>
+              </div>
+              <div style="padding: 4px 8px; background: #fef2f2; border: 1px solid #fecaca; border-radius: 4px; display: flex; justify-content: space-between;">
+                <span style="color: #991b1b; font-weight: 700;">⚠ Certificado de Antecedentes</span>
+                <span style="color: #dc2626; font-weight: 700;">Faltante</span>
+              </div>
+            </div>
+            <div style="margin-top: 8px; font-size: 10px; color: #0d9488; font-weight: 600;" data-i18n="sol8_save">
+              ⚡ Trigger disparado: Notificación SMS/WhatsApp automática con enlace seguro de subida.
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 9: AI CHAT DE NURTURING Y COTIZACIONES
+             ============================================================== -->
+        <article class="card grid-item" data-category="enterprise">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol9_mod">Conversión Comercial</span>
+              <span class="card-tech-tag">Lead Nurturing Proactivo</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol9_title">AI Chat de Seguimiento de Oportunidades y Cotizaciones</h3>
+            <p class="card-desc" data-i18n="sol9_desc">
+              Asistente conversacional de nutrición comercial para prospectos con ofertas vigentes, aclaración de coberturas y reactivación de pagos pendientes.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="margin-bottom: 6px; font-size: 10.5px; color: #64748b;">
+              Lead: Mariana Gómez • Cotización #COT-4412 ($1,200 USD) • Expira en 48 hrs
+            </div>
+            <div class="result-box blue" style="margin-top: 0;">
+              <strong>Bot IA:</strong> "Hola Mariana, notamos que revisaste el contrato para el plan asistencial. ¿Deseas diferir el pago inicial en 3 cuotas sin interés antes de que expire la tarifa reservada?"
+            </div>
+            <div style="margin-top: 8px; font-size: 10px; color: #0f766e; font-weight: 700;" data-i18n="sol9_impact">
+              📈 Impacto medido: +23% en rescate y cierre de cotizaciones sin intervención humana.
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 10: VOICE AI COBRANZAS (Synthflow)
+             ============================================================== -->
+        <article class="card grid-item" data-category="enterprise">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol10_mod">Voz Telefónica Autónoma</span>
+              <span class="card-tech-tag">Synthflow + Twilio API</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol10_title">Voice AI para Cobranzas &amp; Acuerdos de Pago</h3>
+            <p class="card-desc" data-i18n="sol10_desc">
+              Llamadas salientes inteligentes con baja latencia (&lt; 600ms) para concertar acuerdos de cartera con clientes en mora y enviar enlaces de pago seguros.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <strong>📞 Llamada Activa: +57 312 ••• 4410</strong>
+              <span style="font-family: monospace; color: #64748b;">01:14 min</span>
+            </div>
+            <div class="wave-container">
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+              <div class="wave-bar"></div>
+            </div>
+            <div class="result-box teal" style="margin-top: 0;">
+              <strong>Agente de Voz:</strong> "Comprendo, Sr. Ramírez. Podemos pausar los intereses diferiendo los $320.000 COP en dos cuotas. ¿Le envío el enlace seguro a su celular en este momento?"
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 11: AGENDAMIENTO AUTOMÁTICO DE CITAS
+             ============================================================== -->
+        <article class="card grid-item" data-category="enterprise">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol11_mod">Gestión de Calendarios</span>
+              <span class="card-tech-tag">Stripe / Wompi Integrado</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol11_title">IA de Agendamiento Automático de Consultas y Pagos</h3>
+            <p class="card-desc" data-i18n="sol11_desc">
+              Coordinación autónoma de citas gratuitas y pagadas, procesamiento del depósito previo y reprogramación dinámica según disponibilidad en agenda.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div class="metric-grid">
+              <div class="metric-card">
+                <div class="metric-card-num">1,840</div>
+                <div class="metric-card-lbl" data-i18n="sol11_k1">Citas Agendadas/Mes</div>
+              </div>
+              <div class="metric-card">
+                <div class="metric-card-num" style="color: #16a34a;">94.2%</div>
+                <div class="metric-card-lbl" data-i18n="sol11_k2">Asistencia Efectiva</div>
+              </div>
+            </div>
+            <div class="result-box teal">
+              <strong data-i18n="sol11_note_t">✓ Confirmación Automática:</strong>
+              <span data-i18n="sol11_note_b">Cobro anticipado en citas especializadas que reduce el ausentismo (no-show) en más de un 60%.</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 12: ATENCIÓN DE SOLICITUDES Y SINIESTROS
+             ============================================================== -->
+        <article class="card grid-item" data-category="enterprise">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol12_mod">Servicio al Cliente Seguro</span>
+              <span class="card-tech-tag">Auth OTP + Conector Core</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol12_title">IA de Atención de Solicitudes y Notificación de Siniestros</h3>
+            <p class="card-desc" data-i18n="sol12_desc">
+              Resolución autónoma de reclamaciones, consulta de indemnizaciones y radicación de incapacidades con validación de identidad en dos pasos.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 6px;">
+              <span>Sesión Autenticada con OTP:</span>
+              <strong style="color: #16a34a;">Verificado ✓</strong>
+            </div>
+            <div class="result-box blue" style="margin-top: 0;">
+              <strong>Reclamación #RC-2026-90: Reembolso de Medicamentos</strong><br>
+              Estado: Aprobado para dispersión bancaria dentro de las próximas 24 horas ($185.000 COP).
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 13: AI RECEPTIONIST & ORQUESTADOR
+             ============================================================== -->
+        <article class="card grid-item" data-category="enterprise">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol13_mod">Arquitectura Multi-Agente</span>
+              <span class="card-tech-tag">Intelligent Router</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol13_title">AI Receptionist: Orquestador &amp; Enrutamiento de Intenciones</h3>
+            <p class="card-desc" data-i18n="sol13_desc">
+              Cerebro clasificador que identifica la necesidad del usuario y la distribuye al sub-agente específico (facturación, citas, soporte o asesor humano).
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div class="form-group">
+              <label class="form-label" data-i18n="sol13_lbl">Ingrese mensaje del usuario para probar el ruteo:</label>
+              <div style="display: flex; gap: 6px;">
+                <input type="text" id="router-test-input" class="form-input" value="Quiero saber por qué me llegó un cobro de laboratorio si mi póliza lo cubre">
+                <button class="btn-action" onclick="window.routeQuery()" data-i18n="sol13_btn">Clasificar</button>
+              </div>
+            </div>
+            <div id="router-result-box" class="result-box teal">
+              <strong>Intención Identificada: Reclamación Financiera / Cobertura</strong><br>
+              Destino: <strong>Sub-Agente de Facturación &amp; Convenios</strong> (Confianza: 98.4%)
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 14: GENERADOR DE BUSINESS CASES & ROADMAPS (JIRA)
+             ============================================================== -->
+        <article class="card grid-item" data-category="enterprise">
+          <div>
+            <div class="card-header-row">
+              <span class="card-mod-badge" data-i18n="sol14_mod">Product Management AI</span>
+              <span class="card-tech-tag">JIRA &amp; Confluence Parser</span>
+            </div>
+            <h3 class="card-title" data-i18n="sol14_title">Generador de Business Cases, Epics e Historias de Usuario</h3>
+            <p class="card-desc" data-i18n="sol14_desc">
+              IA generativa interna que convierte directrices estratégicas en descomposición ágil de historias de usuario con criterios Gherkin y proyección de ROI.
+            </p>
+          </div>
+          <div class="sim-panel">
+            <div style="display: flex; justify-content: space-between; font-size: 10px; color: #64748b; margin-bottom: 4px;">
+              <span>Prompt: "Módulo de Receta Médica Electrónica"</span>
+              <span style="color: #0f766e; font-weight: 700;">Generado en 2.4s</span>
+            </div>
+            <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 8px; font-family: monospace; font-size: 10.5px; color: #1e293b;">
+              <strong style="color: #0f766e;">US-104: Validación de Interacción Medicamentosa en Tiempo Real</strong><br>
+              • <strong>Given:</strong> Médico prescribe anticoagulante X a paciente con historial Y...<br>
+              • <strong>When:</strong> Sistema valida contraindicaciones en base farmacéutica...<br>
+              • <strong>Then:</strong> Bloquear prescripción o requerir justificación digital.
+            </div>
+          </div>
+        </article>
+
+        <!-- ==============================================================
+             SOLUTION 15: AI COMMAND CENTER GLOBAL
+             ============================================================== -->
+        <article class="card grid-item-full grid-item" data-category="enterprise">
+          <div class="card-header-row">
+            <span class="card-mod-badge" data-i18n="sol15_mod">Telemetría de Agentes</span>
+            <span class="card-tech-tag">Supervisión Ejecutiva 24/7</span>
+          </div>
+          <h3 class="card-title" data-i18n="sol15_title">AI Command Center: Telemetría Global &amp; Deflection Rate</h3>
+          <p class="card-desc" data-i18n="sol15_desc">
+            Tablero de control unificado que monitoriza el volumen de transacciones de IA, la tasa de resolución autónoma y el ahorro consolidado en horas de trabajo.
+          </p>
+
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-card-num">142,850</div>
+              <div class="metric-card-lbl" data-i18n="sol15_k1">Solicitudes Procesadas</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-card-num" style="color: #0f766e;">78.4%</div>
+              <div class="metric-card-lbl" data-i18n="sol15_k2">Deflection Rate Promedio</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-card-num" style="color: #0284c7;">3,420 hrs</div>
+              <div class="metric-card-lbl" data-i18n="sol15_k3">Horas Hombre Ahorradas</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-card-num" style="color: #16a34a;">86.2%</div>
+              <div class="metric-card-lbl" data-i18n="sol15_k4">Resolución Sin Fricción</div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+
+      <!-- Formal Disclosure & Intellectual Property Notice -->
+      <section class="disclosure-box">
+        <div class="disclosure-title">
+          <span>🛡️</span> <span data-i18n="discTitle">Aviso de Confidencialidad y Propiedad Intelectual</span>
+        </div>
+        <p data-i18n="discBody">
+          Todos los nombres de pacientes, historiales clínicos, identificadores y datos numéricos expuestos en esta plataforma demostrativa corresponden a simulaciones y conjuntos de datos sintéticos estructurados con fines de demostración técnica y metodológica. La propiedad intelectual de las arquitecturas de software y modelos finales en producción pertenece a las respectivas organizaciones e instituciones contratantes. No se divulga información real ni confidencial, en estricto apego al secreto médico y a las leyes de protección de datos personales.
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <!-- Modal Inspector for Medical Citations -->
+  <div id="citation-modal" class="modal-overlay" onclick="if(event.target === this) window.closeCitationModal()">
+    <div class="modal-window">
+      <div class="modal-head">
+        <span class="modal-title" id="modal-title" data-i18n="modalHead">Documento Fuente Original (LIS/HIS)</span>
+        <button class="modal-close" onclick="window.closeCitationModal()">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-content">
+        <!-- Inyectado por JS -->
+      </div>
+      <div class="modal-foot">
+        <span>Hash de Integridad: <code style="color: #0f766e;">sha256:4a8e99b2...</code></span>
+        <span style="color: #16a34a; font-weight: 700;">✓ Registro Clínico Firmado</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Page Footer -->
+  <footer class="page-footer">
+    <div class="container">
+      <p><strong>Daniel Rodrigo Miranda García</strong> — <span data-i18n="footRole">Liderazgo de Producto &amp; Consultoría de Inteligencia Artificial</span></p>
+      <p style="margin-top: 4px;">Bogotá, Colombia • Contacto: +57 350 504 5337 • <a href="mailto:dani_miranda.garcia@hotmail.com" style="color: #0f766e; text-decoration: underline;">dani_miranda.garcia@hotmail.com</a></p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+       VANILLA JAVASCRIPT LOGIC & GLOBAL WINDOW EXPORTS
+       ========================================================================== -->
+  <script>
+    (function() {
+      // 1. DICCIONARIO BILINGÜE COMPLETO
+      const dict = {
+        es: {
+          topTag: "Entorno Demostrativo",
+          topSub: "Simulaciones operativas de modelos de IA en producción",
+          topConsultant: "Consultor:",
+          navSubtitle: "Liderazgo de Producto & Consultoría IA",
+          btnPhase1: "Modelo de consumo de historia clínica",
+          btnContact: "Contactar",
+          heroBadge: "⚡ Simuladores Interactivos de Arquitectura",
+          heroTitle1: "Inteligencia Artificial Operativa,",
+          heroTitle2: "Clínica y Financieramente Rentable",
+          heroDesc: "Muestra funcional, arquitectura técnica y pantallas interactivas de las soluciones de Inteligencia Artificial que he diseñado e implementado para optimizar operaciones hospitalarias, salud digital y procesos de alta demanda corporativa.",
+          filterAll: "Todas las Soluciones (15)",
+          filterHealth: "Track Salud Hospitalaria (7)",
+          filterEnterprise: "Track Negocio & Automatización (8)",
+          sol1_badge: "Arquitectura de Referencia Fase 1",
+          sol1_mod: "Módulo Asistencial Clínico #1",
+          sol1_title: "Modelo de Consumo de Historia Clínica & Resumen de Exámenes",
+          sol1_desc: "Motor de consulta en lenguaje natural implementado para auditoría clínica y facturación que recupera laboratorios numéricos y notas médicas con citación obligatoria del identificador de examen, fecha y profesional firmante.",
+          sol1_patient: "Paciente Sintético: PAC-78219 (C. Morales, 58a)",
+          sol1_prompt_lbl: "Consultas Preconfiguradas para Pruebas:",
+          sol1_btn_q1: "¿Últimos laboratorios de glucemia y función renal?",
+          sol1_btn_q2: "¿Antecedentes quirúrgicos y alergias medicamentosas?",
+          sol1_btn_q3: "¿Última evolución médica y plan de ajuste farmacológico?",
+          sol1_input_lbl: "O formule su propia pregunta clínica:",
+          sol1_btn_ask: "Consultar",
+          sol1_res_title: "Respuesta Auditable de la IA",
+          sol2_mod: "Salud Digital & Telemedicina",
+          sol2_title: "IA de Triaje Médico y Enrutamiento Clínico",
+          sol2_desc: "Clasificación protocolizada de síntomas en tiempo real para derivación médica asistencial (Telemedicina, Consulta Prioritaria o Urgencias).",
+          sol2_lbl: "Seleccione Cuadro Clínico de Ingreso:",
+          sol2_opt1: "Dolor torácico pleurítico + Fiebre 38.8°C",
+          sol2_opt2: "Cefalea tensional leve sin signos de alarma",
+          sol2_opt3: "Otalgia pediátrica aguda de 24 horas",
+          sol3_mod: "Gestión Quirúrgica",
+          sol3_title: "Estimación de Tiempos Reales de Cirugía",
+          sol3_desc: "Predicción de duración quirúrgica (incisión a cierre) cruzando procedimiento, historial del cirujano, riesgo anestésico y edad del paciente.",
+          sol3_lbl_proc: "Procedimiento:",
+          sol3_opt_c: "Colecistectomía Laparoscópica",
+          sol3_opt_h: "Hernioplastia Inguinal",
+          sol3_opt_a: "Artroscopia de Rodilla",
+          sol3_opt_hip: "Reemplazo de Cadera",
+          sol3_lbl_surg: "Cirujano Asignado:",
+          sol3_s1: "Dr. Morales (Curva Alta)",
+          sol3_s2: "Dra. Herrera (Estándar)",
+          sol3_s3: "Dr. Castro (Alta Complejidad)",
+          sol3_lbl_asa: "Riesgo ASA:",
+          sol3_lbl_age: "Edad Paciente:",
+          sol4_mod: "Capacidad Hospitalaria",
+          sol4_title: "Torre de Control de Egresos & Giro de Cama",
+          sol4_desc: "Predicción y coordinación del flujo intrahospitalario Urgencias → Quirófano → Hospitalización → Altas para desatascar admisiones.",
+          sol4_kpi1: "En Urgencias",
+          sol4_kpi2: "En Quirófano",
+          sol4_kpi3: "Ocupación Piso",
+          sol4_kpi4: "Altas Hoy (IA)",
+          sol4_alert_t: "Alerta Cuello de Botella (15:00 - 17:00):",
+          sol4_alert_b: "4 camas demandadas por recuperación post-quirúrgica vs 2 altas estimadas. Se sugiere priorizar alta médica en Cama 308 (Score hemodinámico: 96%).",
+          sol5_mod: "Control de Costos Clínicos",
+          sol5_title: "Canastas Quirúrgicas & Control de Rentabilidad",
+          sol5_desc: "Parametrización de medicamentos, dispositivos e insumos por intervención para contrastar en tiempo real con la tarifa contratada con el pagador.",
+          sol5_payer: "Aseguradora / Convenio:",
+          sol5_rate: "Tarifa Paquetizada Pactada:",
+          sol5_mat: "Costo de Insumos Proyectado (ML):",
+          sol5_margin: "Margen Estimado de Cirugía: +46.0%",
+          sol5_sub: "Alerta de prevención: 18% de variaciones históricas ocurrían por suturas mecánicas no autorizadas.",
+          sol6_mod: "Eficiencia de Pabellón",
+          sol6_title: "Torre de Quirófanos: Control de Tiempos Muertos",
+          sol6_desc: "Panel visual de estado de salas quirúrgicas, tiempos de desinfección/limpieza y reducción del downtime de recambio entre intervenciones.",
+          sol6_r1: "Sala 1: En Cirugía",
+          sol6_r1_s: "Fin estimado: 28 min",
+          sol6_r2: "Sala 2: Limpieza y Desinfección",
+          sol6_r2_s: "Cronómetro: 08:24 min (Meta 15')",
+          sol6_r3: "Sala 3: Lista para Ingreso",
+          sol6_r3_s: "Camilla de paciente en tránsito",
+          sol6_stat: "⏱️ Tiempo de recambio optimizado: Disminución de 34 min a 19 min promedio por sala.",
+          sol7_mod: "Auditoría Médica",
+          sol7_title: "Prevención de Glosas y Control de Pre-Facturación",
+          sol7_desc: "Auditoría automatizada que concilia órdenes médicas, notas de enfermería y registros de farmacia con las cuentas radicadas antes del envío al asegurador.",
+          sol7_kardex: "Insumo Registrado en Kardex:",
+          sol7_prebill: "Cargado en Pre-factura:",
+          sol7_alert_t: "Glosa Inminente Evitada:",
+          sol7_alert_b: "Discrepancia de 1 unidad no sustentada en hoja de administración. Cuenta corregida de forma preventiva previo a radicación.",
+          sol8_mod: "Extracción Documental",
+          sol8_title: "Agente de Procesamiento y Validación de Expedientes",
+          sol8_desc: "Extracción semántica en dossiers complejos (evaluaciones de salud psicológica y certificados legales) con detección inmediata de requisitos pendientes.",
+          sol8_save: "⚡ Trigger disparado: Notificación SMS/WhatsApp automática con enlace seguro de subida.",
+          sol9_mod: "Conversión Comercial",
+          sol9_title: "AI Chat de Seguimiento de Oportunidades y Cotizaciones",
+          sol9_desc: "Asistente conversacional de nutrición comercial para prospectos con ofertas vigentes, aclaración de coberturas y reactivación de pagos pendientes.",
+          sol9_impact: "📈 Impacto medido: +23% en rescate y cierre de cotizaciones sin intervención humana.",
+          sol10_mod: "Voz Telefónica Autónoma",
+          sol10_title: "Voice AI para Cobranzas & Acuerdos de Pago",
+          sol10_desc: "Llamadas salientes inteligentes con baja latencia (< 600ms) para concertar acuerdos de cartera con clientes en mora y enviar enlaces de pago seguros.",
+          sol11_mod: "Gestión de Calendarios",
+          sol11_title: "IA de Agendamiento Automático de Consultas y Pagos",
+          sol11_desc: "Coordinación autónoma de citas gratuitas y pagadas, procesamiento del depósito previo y reprogramación dinámica según disponibilidad en agenda.",
+          sol11_k1: "Citas Agendadas/Mes",
+          sol11_k2: "Asistencia Efectiva",
+          sol11_note_t: "✓ Confirmación Automática:",
+          sol11_note_b: "Cobro anticipado en citas especializadas que reduce el ausentismo (no-show) en más de un 60%.",
+          sol12_mod: "Servicio al Cliente Seguro",
+          sol12_title: "IA de Atención de Solicitudes y Notificación de Siniestros",
+          sol12_desc: "Resolución autónoma de reclamaciones, consulta de indemnizaciones y radicación de incapacidades con validación de identidad en dos pasos.",
+          sol13_mod: "Arquitectura Multi-Agente",
+          sol13_title: "AI Receptionist: Orquestador & Enrutamiento de Intenciones",
+          sol13_desc: "Cerebro clasificador que identifica la necesidad del usuario y la distribuye al sub-agente específico (facturación, citas, soporte o asesor humano).",
+          sol13_lbl: "Ingrese mensaje del usuario para probar el ruteo:",
+          sol13_btn: "Clasificar",
+          sol14_mod: "Product Management AI",
+          sol14_title: "Generador de Business Cases, Epics e Historias de Usuario",
+          sol14_desc: "IA generativa interna que convierte directrices estratégicas en descomposición ágil de historias de usuario con criterios Gherkin y proyección de ROI.",
+          sol15_mod: "Telemetría de Agentes",
+          sol15_title: "AI Command Center: Telemetría Global & Deflection Rate",
+          sol15_desc: "Tablero de control unificado que monitoriza el volumen de transacciones de IA, la tasa de resolución autónoma y el ahorro consolidado en horas de trabajo.",
+          sol15_k1: "Solicitudes Procesadas",
+          sol15_k2: "Deflection Rate Promedio",
+          sol15_k3: "Horas Hombre Ahorradas",
+          sol15_k4: "Resolución Sin Fricción",
+          discTitle: "Aviso de Confidencialidad y Propiedad Intelectual",
+          discBody: "Todos los nombres de pacientes, historiales clínicos, identificadores y datos numéricos expuestos en esta plataforma demostrativa corresponden a simulaciones y conjuntos de datos sintéticos estructurados con fines de demostración técnica y metodológica. La propiedad intelectual de las arquitecturas de software y modelos finales en producción pertenece a las respectivas organizaciones e instituciones contratantes. No se divulga información real ni confidencial, en estricto apego al secreto médico y a las leyes de protección de datos personales.",
+          modalHead: "Documento Fuente Original (LIS/HIS)",
+          footRole: "Liderazgo de Producto & Consultoría de Inteligencia Artificial"
+        },
+        en: {
+          topTag: "Demonstration Environment",
+          topSub: "Operational simulations of production AI models",
+          topConsultant: "Consultant:",
+          navSubtitle: "Product Leadership & AI Consulting",
+          btnPhase1: "EHR Consumption Model",
+          btnContact: "Contact",
+          heroBadge: "⚡ Interactive Architecture Simulators",
+          heroTitle1: "Operational, Clinical &",
+          heroTitle2: "Financially Viable Artificial Intelligence",
+          heroDesc: "Functional showcase, technical architecture, and interactive dashboards of Artificial Intelligence solutions I have architected and deployed to streamline hospital workflows, digital healthcare, and enterprise automation.",
+          filterAll: "All Solutions (15)",
+          filterHealth: "Hospital Healthcare Track (7)",
+          filterEnterprise: "Business & Automation Track (8)",
+          sol1_badge: "Phase 1 Reference Architecture",
+          sol1_mod: "Clinical Assistant Module #1",
+          sol1_title: "EHR Consumption Model & Diagnostic Reports Summary",
+          sol1_desc: "Natural language query engine implemented for clinical audit and billing that retrieves numerical laboratory tests and physician notes with mandatory citation of test ID, timestamp, and signed provider.",
+          sol1_patient: "Synthetic Patient: PAC-78219 (C. Morales, 58y)",
+          sol1_prompt_lbl: "Pre-configured Benchmark Queries:",
+          sol1_btn_q1: "Latest glycemic and renal function lab tests?",
+          sol1_btn_q2: "Surgical history and drug allergies?",
+          sol1_btn_q3: "Latest internal medicine progress note & pharmacological plan?",
+          sol1_input_lbl: "Or ask your own clinical question:",
+          sol1_btn_ask: "Query",
+          sol1_res_title: "Auditable AI Output",
+          sol2_mod: "Digital Health & Telemedicine",
+          sol2_title: "AI Medical Triage & Clinical Routing",
+          sol2_desc: "Real-time protocolized symptom classification for patient intake and routing (Telemedicine, Priority Clinic, or Emergency Room).",
+          sol2_lbl: "Select Intake Symptom Profile:",
+          sol2_opt1: "Pleuritic chest pain + Fever 38.8°C",
+          sol2_opt2: "Mild tension headache without red flags",
+          sol2_opt3: "Acute pediatric ear pain (24h duration)",
+          sol3_mod: "Surgical Management",
+          sol3_title: "Real Surgical Duration Estimation",
+          sol3_desc: "Incision-to-closure duration forecasting leveraging procedure type, surgeon historical distribution, ASA physical status, and patient age.",
+          sol3_lbl_proc: "Procedure:",
+          sol3_opt_c: "Laparoscopic Cholecystectomy",
+          sol3_opt_h: "Inguinal Herniorrhaphy",
+          sol3_opt_a: "Knee Arthroscopy",
+          sol3_opt_hip: "Total Hip Replacement",
+          sol3_lbl_surg: "Lead Surgeon:",
+          sol3_s1: "Dr. Morales (High Volume)",
+          sol3_s2: "Dr. Herrera (Standard)",
+          sol3_s3: "Dr. Castro (High Complexity)",
+          sol3_lbl_asa: "ASA Classification:",
+          sol3_lbl_age: "Patient Age:",
+          sol4_mod: "Hospital Capacity",
+          sol4_title: "Discharge Control Tower & Bed Turnover",
+          sol4_desc: "Forecasting and managing patient flow (ER → OR → Inpatient Wards → Discharges) to eliminate bottlenecks in admissions.",
+          sol4_kpi1: "In Emergency Dept",
+          sol4_kpi2: "In Operating Rooms",
+          sol4_kpi3: "Ward Occupancy",
+          sol4_kpi4: "Discharges Today",
+          sol4_alert_t: "Bottleneck Warning (15:00 - 17:00):",
+          sol4_alert_b: "4 inpatient beds requested from post-op recovery vs 2 projected discharges. Priority ward round recommended for Bed 308 (Hemodynamic stability: 96%).",
+          sol5_mod: "Clinical Cost Control",
+          sol5_title: "Surgical Baskets & Profitability Analysis",
+          sol5_desc: "Intervention-level bill of materials & medication benchmarking vs contracted payer reimbursement schedules.",
+          sol5_payer: "Insurance Agreement:",
+          sol5_rate: "Agreed Bundled Rate:",
+          sol5_mat: "Projected Consumables Cost (ML):",
+          sol5_margin: "Estimated Surgical Margin: +46.0%",
+          sol5_sub: "Preventive insight: 18% of historical variances were caused by non-preauthorized mechanical staples.",
+          sol6_mod: "OR Efficiency",
+          sol6_title: "OR Control Tower: Turnover & Downtime Tracking",
+          sol6_desc: "Real-time dashboard for surgical theater statuses, cleaning downtime tracking, and inter-procedure delay minimization.",
+          sol6_r1: "OR 1: In Surgery",
+          sol6_r1_s: "Estimated finish: 28 min",
+          sol6_r2: "OR 2: Cleaning & Disinfection",
+          sol6_r2_s: "Timer: 08:24 min (Target: 15')",
+          sol6_r3: "OR 3: Ready for Intake",
+          sol6_r3_s: "Patient transfer in progress",
+          sol6_stat: "⏱️ Turnover optimized: Average room changeover reduced from 34 min to 19 min.",
+          sol7_mod: "Medical Audit",
+          sol7_title: "Pre-Billing Audit & Claim Rejection Prevention",
+          sol7_desc: "Automated engine cross-checking medical orders, nursing notes, and pharmacy logs against pre-invoices before payer submission.",
+          sol7_kardex: "Item in Pharmacy Kardex:",
+          sol7_prebill: "Billed on Pre-Invoice:",
+          sol7_alert_t: "Imminent Claim Rejection Prevented:",
+          sol7_alert_b: "1 unit discrepancy lacking nursing administration record. Pre-bill automatically adjusted before submission.",
+          sol8_mod: "Document Extraction",
+          sol8_title: "Dossier Processing & Document Verification Agent",
+          sol8_desc: "Semantic parsing across complex portfolios (psychological evaluations, legal affidavits) with instant detection of missing documents.",
+          sol8_save: "⚡ Automated trigger: SMS/WhatsApp notification with secure upload link sent to client.",
+          sol9_mod: "Commercial Conversion",
+          sol9_title: "AI Chat for Opportunity Nurturing & Quotes",
+          sol9_desc: "Proactive customer nurturing assistant engaging prospects with active quotes, answering policy details, and unblocking pending deposits.",
+          sol9_impact: "📈 Measured impact: +23% uplift in closing pending quotes with zero manual intervention.",
+          sol10_mod: "Autonomous Voice AI",
+          sol10_title: "Voice AI for Collections & Settlement Plans",
+          sol10_desc: "Ultra-low latency (< 600ms) outbound voice agents negotiating payment plans with overdue accounts and dispatching instant payment links.",
+          sol11_mod: "Calendar Automation",
+          sol11_title: "Automated Consultation Booking & Pre-payment AI",
+          sol11_desc: "Autonomous scheduling of free and paid consultations, upfront payment capture, and automated calendar slot optimization.",
+          sol11_k1: "Bookings/Month",
+          sol11_k2: "Attendance Rate",
+          sol11_note_t: "✓ Automated Confirmation:",
+          sol11_note_b: "Upfront deposit collection for specialist appointments decreased no-shows by over 60%.",
+          sol12_mod: "Secure Customer Support",
+          sol12_title: "AI Claims Assistant & Customer Service",
+          sol12_desc: "Automated policy inquiries, reimbursement status checks, and medical disability claim intake with 2-step OTP validation.",
+          sol13_mod: "Multi-Agent System",
+          sol13_title: "AI Receptionist: Intent Orchestrator & Smart Router",
+          sol13_desc: "Master classifying brain analyzing client requests and dispatching queries to the designated sub-agent or human advisor.",
+          sol13_lbl: "Enter user message to test intent classification:",
+          sol13_btn: "Classify",
+          sol14_mod: "Product Management AI",
+          sol14_title: "Business Case, Epics & User Story Generator",
+          sol14_desc: "Internal generative AI translating business initiatives into structured agile epics with Gherkin acceptance criteria and ROI estimates.",
+          sol15_mod: "Agent Telemetry",
+          sol15_title: "AI Command Center: Global Telemetry & Deflection",
+          sol15_desc: "Unified monitoring dashboard tracking interaction volume, automated resolution rates, and consolidated labor hours saved.",
+          sol15_k1: "Requests Handled",
+          sol15_k2: "Average Deflection Rate",
+          sol15_k3: "Labor Hours Saved",
+          sol15_k4: "Frictionless Resolution",
+          discTitle: "Confidentiality & Intellectual Property Disclaimer",
+          discBody: "All patient names, clinical records, identifiers, and numerical data presented on this demonstration platform represent synthetic benchmarks structured solely for technical and methodological validation. The intellectual property of production software architectures belongs to the respective contracting organizations. No protected health information (PHI) or proprietary data is disclosed, complying strictly with medical confidentiality and data privacy standards.",
+          modalHead: "Original Source Document (LIS/HIS)",
+          footRole: "Product Leadership & Artificial Intelligence Consulting"
+        }
+      };
+
+      let currentLang = 'es';
+
+      // 2. EXPOSICIÓN GLOBAL DE FUNCIONES A WINDOW
+      window.switchLang = function(lang) {
+        currentLang = lang;
+        const btnEs = document.getElementById('btn-lang-es');
+        const btnEn = document.getElementById('btn-lang-en');
+
+        if (lang === 'es') {
+          btnEs.classList.add('active');
+          btnEn.classList.remove('active');
+        } else {
+          btnEn.classList.add('active');
+          btnEs.classList.remove('active');
+        }
+
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+          const key = el.getAttribute('data-i18n');
+          if (dict[lang] && dict[lang][key]) {
+            el.innerText = dict[lang][key];
+          }
+        });
+
+        // Actualizar simuladores dependientes del idioma
+        window.evalTriage();
+        window.calcSurgeryTime();
+      };
+
+      window.filterCategory = function(cat) {
+        const btnAll = document.getElementById('filter-all');
+        const btnHealth = document.getElementById('filter-health');
+        const btnEnt = document.getElementById('filter-enterprise');
+
+        [btnAll, btnHealth, btnEnt].forEach(b => b.classList.remove('active'));
+
+        if (cat === 'all') btnAll.classList.add('active');
+        if (cat === 'health') btnHealth.classList.add('active');
+        if (cat === 'enterprise') btnEnt.classList.add('active');
+
+        const items = document.querySelectorAll('.grid-item');
+        items.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (cat === 'all' || itemCat === cat) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
+      };
+
+      window.scrollToSection = function(id) {
+        const el = document.getElementById(id);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      // 3. LOGICA RAG CLÍNICO (SOLUCIÓN 1)
+      window.runClinicalQuery = function(type) {
+        const out = document.getElementById('clinical-response-content');
+        const isEn = (currentLang === 'en');
+
+        if (type === 'labs') {
+          out.innerHTML = isEn ? `
+            <div class="result-box amber">
+              <strong>• Glycated Hemoglobin (HbA1c): 8.4%</strong> (Elevated &gt; 7.0%).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Source: <span class="citation-tag">LIS_Lab #9102</span> • Date: 14/10/2026 08:30
+                <a class="citation-link" onclick="window.openCitationModal('lab9102')">[View original report]</a>
+              </span>
+            </div>
+            <div class="result-box teal">
+              <strong>• Serum Creatinine: 1.02 mg/dL</strong> (eGFR: 82 ml/min/1.73m² - Normal Range).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Source: <span class="citation-tag">LIS_Lab #9102</span> • Date: 14/10/2026 08:30
+                <a class="citation-link" onclick="window.openCitationModal('lab9102')">[View original report]</a>
+              </span>
+            </div>
+          ` : `
+            <div class="result-box amber">
+              <strong>• Hemoglobina Glicosilada (HbA1c): 8.4%</strong> (Fuera de rango &gt; 7.0%).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Fuente: <span class="citation-tag">LIS_Lab #9102</span> • Fecha: 14/10/2026 08:30
+                <a class="citation-link" onclick="window.openCitationModal('lab9102')">[Ver reporte original]</a>
+              </span>
+            </div>
+            <div class="result-box teal">
+              <strong>• Creatinina Sérica: 1.02 mg/dL</strong> (TFG estimada: 82 ml/min/1.73m² - Rango Normal).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Fuente: <span class="citation-tag">LIS_Lab #9102</span> • Fecha: 14/10/2026 08:30
+                <a class="citation-link" onclick="window.openCitationModal('lab9102')">[Ver reporte original]</a>
+              </span>
+            </div>
+          `;
+        } else if (type === 'allergies') {
+          out.innerHTML = isEn ? `
+            <div class="result-box red">
+              <strong>• Confirmed Allergy: Penicillin &amp; Beta-lactams</strong> (Severe laryngeal angioedema in 2018).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Source: <span class="citation-tag">EHR_Allergy #04</span> • Logged: 22/05/2018 - Dr. M. Torres
+                <a class="citation-link" onclick="window.openCitationModal('allergy')">[View original entry]</a>
+              </span>
+            </div>
+            <div class="result-box teal">
+              <strong>• Surgical History:</strong> Laparoscopic appendectomy (2012), Inguinal hernia repair (2020). No anesthetic adverse events noted.
+            </div>
+          ` : `
+            <div class="result-box red">
+              <strong>• Alergia Confirmada: Penicilina y Betalactámicos</strong> (Angioedema laríngeo severo en 2018).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Fuente: <span class="citation-tag">EHR_Allergy #04</span> • Registrado: 22/05/2018 - Dr. M. Torres
+                <a class="citation-link" onclick="window.openCitationModal('allergy')">[Ver registro clínico]</a>
+              </span>
+            </div>
+            <div class="result-box teal">
+              <strong>• Antecedentes Quirúrgicos:</strong> Apendicectomía laparoscópica (2012), Hernioplastia inguinal (2020). Sin complicaciones anestésicas.
+            </div>
+          `;
+        } else if (type === 'internal_med') {
+          out.innerHTML = isEn ? `
+            <div class="result-box blue">
+              <strong>• Progress Note (Internal Medicine):</strong> Patient reports gastrointestinal intolerance to Metformin. Plan: Request renal ultrasound and evaluate transition to SGLT2 inhibitor (Empagliflozin 10mg).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Source: <span class="citation-tag">EHR_Note #44312</span> • Date: 15/10/2026 11:15 - Dr. J. Rivas
+                <a class="citation-link" onclick="window.openCitationModal('note44312')">[View clinical note]</a>
+              </span>
+            </div>
+          ` : `
+            <div class="result-box blue">
+              <strong>• Evolución Medicina Interna:</strong> Paciente refiere intolerancia gastrointestinal a Metformina. Plan: Solicitar ecografía renal y considerar ajuste a inhibidor SGLT2 (Empagliflozina 10mg).<br>
+              <span style="font-size: 10px; color: #64748b;">
+                Fuente: <span class="citation-tag">EHR_Note #44312</span> • Fecha: 15/10/2026 11:15 - Dr. J. Rivas
+                <a class="citation-link" onclick="window.openCitationModal('note44312')">[Ver nota médica]</a>
+              </span>
+            </div>
+          `;
+        } else {
+          const customText = document.getElementById('custom-query-input').value.trim();
+          out.innerHTML = `
+            <div class="result-box blue">
+              <strong>"${customText || (isEn ? 'Verification query' : 'Consulta de verificación')}"</strong><br>
+              ${isEn ? 'Validated across 18 synthetic EHR progress notes: No adverse events recorded for ACE inhibitors or Opioids. Active allergy remains Penicillin.' : 'Validado en 18 evoluciones clínicas sintéticas: No se registran eventos adversos a IECA ni opioides. Alergia activa permanece restringida a Penicilinas.'}<br>
+              <span style="font-size: 10px; color: #64748b;">Source: <span class="citation-tag">EHR_CrossCheck #PAC-78219</span> (0.41s)</span>
+            </div>
+          `;
+        }
+      };
+
+      // 4. MODAL DE CITAS MÉDICAS
+      window.openCitationModal = function(docId) {
+        const modal = document.getElementById('citation-modal');
+        const title = document.getElementById('modal-title');
+        const content = document.getElementById('modal-content');
+        modal.classList.add('open');
+
+        if (docId === 'lab9102') {
+          title.innerText = (currentLang === 'en') ? "LIS Laboratory Result #9102" : "Informe LIS: Laboratorio Central #9102";
+          content.innerHTML = `
+PACIENTE: Carlos Morales (HC: 78219) | FECHA: 14/10/2026 08:30 AM
+LABORATORIO: Central Hospitalario - Bioquímica Automatizada
+VALIDADOR: Dra. Clara Serrano (Bióloga / Lic. 44102)
+---------------------------------------------------------------
+EXAMEN                 RESULTADO     UNIDADES    RANGO REFERENCIA
+---------------------------------------------------------------
+GLUCEMIA AYUNAS        142.0         mg/dL       [70.0 - 100.0]  (ALTO)
+HbA1c GLICOSILADA      8.4           %           [4.0 - 5.7]     (ALTO)
+CREATININA SÉRICA      1.02          mg/dL       [0.70 - 1.25]   (NORMAL)
+TASA FILTRACIÓN GFR    82            ml/min      > 60            (NORMAL)
+NITRÓGENO UREICO (BUN) 18.4          mg/dL       [8.0 - 23.0]    (NORMAL)
+---------------------------------------------------------------
+Muestra procesada en suero sin hemólisis en Cobas 6000.
+Firma Electrónica: SHA-256 Verified.
+          `;
+        } else if (docId === 'note44312') {
+          title.innerText = (currentLang === 'en') ? "EHR Progress Note #44312" : "Nota Médica de Evolución #44312";
+          content.innerHTML = `
+PACIENTE: Carlos Morales | FECHA: 15/10/2026 11:15 AM
+MÉDICO: Dr. Jorge Rivas - Especialista Medicina Interna (Reg. 81920)
+---------------------------------------------------------------
+SUBJETIVO: Paciente acude a control de diabetes tipo 2. Refiere dispepsia
+frecuente y diarrea intermitente asociada a toma de Metformina.
+OBJETIVO: PA: 125/80 mmHg, FC: 72 lpm, Peso: 84.5 kg, IMC: 28.2.
+ANÁLISIS: Control glicémico subóptimo (HbA1c 8.4%). Intolerancia a biguanidas.
+PLAN: Suspender Metformina. Solicitar ecografía de vías urinarias y
+evaluar inicio de Empagliflozina 10mg/día previa confirmación renal.
+          `;
+        } else {
+          title.innerText = (currentLang === 'en') ? "EHR Adverse Drug Event Registry" : "Ficha de Alergias y Reacciones Adversas";
+          content.innerHTML = `
+REGISTRO DE ALERGIAS Y EVENTOS ADVERSOS A MEDICAMENTOS
+PACIENTE: Carlos Morales (HC: 78219)
+---------------------------------------------------------------
+ALÉRGENO: PENICILINA G / AMPICILINA SULBACTAM
+REACCIÓN: Angioedema facial, estridor laríngeo y broncoespasmo.
+FECHA DE EVENTO: 22/05/2018 (Servicio de Urgencias)
+GRAVEDAD: Severa - Grado III (Riesgo Vital Inmediato)
+DISPOSICIÓN: CONTRAINDICACIÓN ABSOLUTA DE ANTIBIÓTICOS BETALACTÁMICOS.
+REGISTRADO POR: Dr. Mateo Torres (Urgenciología).
+          `;
+        }
+      };
+
+      window.closeCitationModal = function() {
+        document.getElementById('citation-modal').classList.remove('open');
+      };
+
+      // 5. TRIAJE MÉDICO (SOLUCIÓN 2)
+      window.evalTriage = function() {
+        const val = document.getElementById('triage-case-select').value;
+        const box = document.getElementById('triage-output-box');
+        const isEn = (currentLang === 'en');
+
+        if (val === 'pleuritic') {
+          box.className = "result-box red";
+          box.innerHTML = isEn ? `
+            <strong>Classification: Triage Level II (Potential Emergency)</strong><br>
+            Pleuritic chest pain with fever (38.8°C) and moderate tachypnea. Mandatory in-person physician evaluation within &lt; 30 minutes. Automated notification dispatched to ER intake.
+          ` : `
+            <strong>Clasificación: Triaje Nivel II (Urgencia con Riesgo Potencial)</strong><br>
+            Dolor torácico pleurítico asociado a fiebre (38.8°C) y taquipnea moderada. Requiere valoración presencial en urgencias en &lt; 30 minutos. Notificación enviada a triage hospitalario.
+          `;
+        } else if (val === 'headache') {
+          box.className = "result-box teal";
+          box.innerHTML = isEn ? `
+            <strong>Classification: Triage Level IV (Priority General Consultation)</strong><br>
+            Tension headache without neurological signs or fever. Suitable for telemedicine consultation within the next 24 hours.
+          ` : `
+            <strong>Clasificación: Triaje Nivel IV (Consulta Prioritaria)</strong><br>
+            Cefalea holocraneal tensional sin signos meníngeos ni fiebre. Apta para atención por telemedicina o cita prioritaria en próximas 24 horas.
+          `;
+        } else {
+          box.className = "result-box amber";
+          box.innerHTML = isEn ? `
+            <strong>Classification: Triage Level III (Semi-Urgent Pediatric)</strong><br>
+            24h pediatric ear pain with low-grade fever (37.7°C). Routed to pediatric outpatient urgent care.
+          ` : `
+            <strong>Clasificación: Triaje Nivel III (Urgencia Menor Pediátrica)</strong><br>
+            Otalgia unilateral en menor de edad con febrícula (37.7°C). Derivado a consulta pediátrica prioritaria presencial.
+          `;
+        }
+      };
+
+      // 6. AGENDAMIENTO QUIRÚRGICO (SOLUCIÓN 3)
+      window.calcSurgeryTime = function() {
+        const proc = document.getElementById('qx-proc').value;
+        const surg = document.getElementById('qx-surg').value;
+        const asa = parseInt(document.getElementById('qx-asa').value);
+        const age = parseInt(document.getElementById('qx-age').value) || 50;
+        const box = document.getElementById('qx-result-box');
+        const isEn = (currentLang === 'en');
+
+        let base = 50;
+        if (proc === 'colelap') base = 55;
+        if (proc === 'hernia') base = 42;
+        if (proc === 'artro') base = 48;
+        if (proc === 'hip') base = 105;
+
+        if (surg === 'fast') base *= 0.88;
+        if (surg === 'slow') base *= 1.18;
+
+        if (asa === 3) base += 14;
+        if (age > 65) base += 8;
+
+        const total = Math.round(base);
+
+        box.innerHTML = isEn ? `
+          <strong>Projected Surgical Duration: ${total} minutes</strong><br>
+          <span style="font-size: 10px;">95% Confidence Interval: [${total - 5} - ${total + 6} min] • Recommended Slot: OR 2 (10:15 - 11:25)</span>
+        ` : `
+          <strong>Tiempo Quirúrgico Proyectado: ${total} minutos</strong><br>
+          <span style="font-size: 10px;">Intervalo de confianza 95%: [${total - 5} - ${total + 6} min] • Slot Quirófano Sugerido: Sala 2 (10:15 - 11:25)</span>
+        `;
+      };
+
+      // 7. ROUTER INTELIGENTE (SOLUCIÓN 13)
+      window.routeQuery = function() {
+        const text = document.getElementById('router-test-input').value.toLowerCase();
+        const box = document.getElementById('router-result-box');
+        const isEn = (currentLang === 'en');
+
+        if (text.includes('cobro') || text.includes('factura') || text.includes('bill') || text.includes('charge')) {
+          box.innerHTML = isEn ? `
+            <strong>Detected Intent: Billing Dispute / Policy Coverage</strong><br>
+            Destination: <strong>Billing &amp; Payer Contracts Agent</strong> (Confidence: 98.4%)
+          ` : `
+            <strong>Intención Identificada: Reclamación Financiera / Cobertura</strong><br>
+            Destino: <strong>Sub-Agente de Facturación &amp; Convenios</strong> (Confianza: 98.4%)
+          `;
+        } else if (text.includes('dolor') || text.includes('fiebre') || text.includes('pain') || text.includes('fever')) {
+          box.innerHTML = isEn ? `
+            <strong>Detected Intent: Clinical Symptom / Emergency Alert</strong><br>
+            Destination: <strong>Medical Triage &amp; Clinical Routing Agent</strong> (Confidence: 99.1%)
+          ` : `
+            <strong>Intención Identificada: Síntoma Médico / Urgencia Asistencial</strong><br>
+            Destino: <strong>Sub-Agente de Triaje Clínico &amp; Derivación</strong> (Confianza: 99.1%)
+          `;
+        } else {
+          box.innerHTML = isEn ? `
+            <strong>Detected Intent: General Support &amp; Information</strong><br>
+            Destination: <strong>AI Receptionist / Knowledge Base</strong> (Confidence: 94.0%)
+          ` : `
+            <strong>Intención Identificada: Consulta General de Servicio</strong><br>
+            Destino: <strong>AI Receptionist / Atención al Usuario</strong> (Confianza: 94.0%)
+          `;
+        }
+      };
+
+      // Inicialización automática
+      window.evalTriage();
+      window.calcSurgeryTime();
+    })();
+  </script>
+</body>
+</html>
